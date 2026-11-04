@@ -1,0 +1,23 @@
+{
+  "rooms": [
+    {
+      "id": "fyr13",
+      "title": "FYR 13",
+      "subtitle": "Natten hvor lyset slukkede",
+      "description": "Lyset i det gamle fyrtårn er gået ud. Skibet nærmer sig de farlige skær, og nogen har efterladt låste rum, koder og mærkelige spor. Kan du få lyset tændt igen?",
+      "cover": "games/fyr13/assets/kaj.svg",
+      "url": "games/fyr13/",
+      "puzzles": 20,
+      "areas": 5,
+      "genre": "Mysterium",
+      "tags": [
+        "Logik",
+        "Koder",
+        "Udforskning"
+      ],
+      "localSaveKey": "fyr13-save-v1",
+      "teacherGuide": "teacher/fyr13-guide.enc.json",
+      "teacherPdf": "teacher/fyr13-walkthrough-pdf.enc.json"
+    }
+  ]
+}
