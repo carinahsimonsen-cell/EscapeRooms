@@ -1,57 +1,38 @@
-# Escaperooms – fælles spilportal
+# Escaperooms – FYR 13 version 3
 
-En samlet, selvstændig portal med originale digitale escape rooms på dansk. **Ét GitHub-repository** og én indgang til alle spillene.
+Denne ZIP indeholder **hele hjemmesiden** samt FYR 13 (version 3). Upload den til det eksisterende GitHub-repository `EscapeRooms`. Der skal IKKE oprettes et nyt repository.
 
-## Læg portalen på GitHub Pages
+## Upload / opdatering
 
-1. Opret **ét nyt repository** på GitHub, fx `escaperooms` (offentligt).
-2. Pak `Escaperooms_GitHub.zip` ud på din computer. Upload **indholdet** til repositoryets rod – `index.html`, `rooms.json`, `portal.js`, `styles.css`, mapperne `games/` og `teacher/`. Upload **ikke** ZIP-filen i sig selv.
-3. Gå til **Settings → Pages**.
-4. Vælg **Deploy from a branch**, derefter `main` og `/(root)`, og gem.
-5. Vent på, at GitHub Pages har udgivet hjemmesiden. Åbn adressen `https://DITBRUGERNAVN.github.io/escaperooms/`.
+1. Pak ZIP-filen ud på din computer.
+2. Gå til GitHub-repositoryet `EscapeRooms` → **Add file → Upload files**.
+3. Upload **indholdet af den udpakkede mappe** med alle undermapper (ikke selve ZIP-filen). Filer som `index.html` og `rooms.json` skal ligge direkte i repositoryets rod.
+4. Gem med **Commit changes**. Hvis GitHub viser eksisterende filer, skal de opdateres med de nye versioner.
+5. GitHub Pages bliver stående på `main` / `/(root)`. Det eksisterende link virker fortsat.
 
-> Test via det rigtige GitHub Pages-link (eller en lokal webserver). Åbning af `index.html` som `file://` kan ikke hente spiloversigten og de krypterede guider.
+## Hvad er nyt i version 3?
 
-## Sådan er portalen organiseret
+- 5 områder og 16 gåder/mekanismer fordelt på 37 klikbare steder.
+- **Reelle forbindelser mellem områderne:** Skipperens kurskort på kajen bruges i forhallen. Kajens serviceetiket giver grundtallet til trykventilerne i maskinrummet. En indgravering under trappen i forhallen forklarer krypteringen i arkivet. Arkivets filterjournal bruges i lanternen.
+- **Tilbagevenden:** Et reparationsbilag i arkivet sender spilleren tilbage til en låst kasse på kajen. Den indeholder et nødprisme, som kræves i lanternen. Først derefter kan hovedkontakten tændes.
+- Logbogen bevarer de fundne spor fra alle områder. Områdekortet gør det muligt at vende tilbage. Et uløst spor markeres i områdekortet, når bilaget findes.
+- Hintsystem med tre hints pr. gåde og tre minutters ventetid mellem hints. Samme ordlyd i lærerens gennemgang.
+- Gemte fremskridt bruger nu `fyr13-save-v3`; tidligere versioner kan ikke fortsættes, fordi opgaver og afhængigheder er ændret.
 
-```text
-escaperooms/
-  index.html                         Fælles forside
-  styles.css                         Design
-  portal.js                          Spiloversigt + læreradgang
-  rooms.json                         Registrering af spil
-  games/
-    fyr13/
-      index.html                     Spil 1 (FYR 13)
-      game.js
-      game-data.js
-      styles.css
-      assets/
-  teacher/
-    fyr13-guide.enc.json             Krypteret lærerguide (kan læses på siden med kode)
-    fyr13-walkthrough-pdf.enc.json   Krypteret PDF (kan downloades efter oplåsning)
-```
+## Læreradgang
 
-Spillet tilgås fx på `.../escaperooms/games/fyr13/`. FYR 13 har 20 gåder i 5 områder. Lærerens walkthrough indeholder alle gåder og **de samme 60 hinttekster** som spillet. Der er tre minutters ventetid mellem hints i elevspillet.
+Læreradgangen på forsiden bruger **samme læreradgangskode som før**. De to filer i `teacher/` er krypterede; den ukrypterede walkthrough-PDF er IKKE med i ZIP-filen. Del ikke lærerkoden eller PDF'en med eleverne.
 
-## Læreradgang og sikkerhed
+## Stemmer og lyd
 
-Tryk **Læreradgang** på forsiden, og indtast den separate lærerkode, som blev leveret med den færdige portal. Koden **ligger ikke i dette repository**, og guiderne er krypteret med AES-256-GCM (nøglen afledes med PBKDF2-SHA256). Både den læsbare HTML-guide og den downloadable PDF er krypteret i repositoryet. Lærere kan bruge den samme kode.
+Stemmeoplæsningen benytter stadig browserens indbyggede danske stemmer. Denne version fokuserer på gameplay og indhold på tværs af scenerne; indtalte stemmer er endnu ikke tilføjet. Lyd kan slås til og fra.
 
-- **Læg ikke koden i repositoryet, i en README på GitHub eller i kodefilerne.**
-- Oplåsningen varer kun, så længe portalsiden holdes åben. Tryk **Lås igen** efter brug.
-- Denne løsning er egnet til privatdeling af lærervejledninger mellem kollegaer, men ikke til eksamenssikkerhed eller personfølsomme oplysninger. En delt kode kan videresendes; der er ingen personlige lærerbrugere, ingen tilbagekaldelse af enkelte personer, og en krypteret fil kan i princippet angribes offline med kodegæt.
-- **Vigtigt:** Elevspillene er JavaScript, der kører i browseren. Spillets svar kan i sidste ende findes af teknisk kyndige elever i spillets kode. Krypteringen beskytter walkthrough-dokumenterne, **ikke** de svar, som browseren skal bruge til at kontrollere opgaver. Stærkere beskyttelse af spilsvar kræver en serverløsning/backend.
-- Den oprindelige PDF ligger **ikke ukrypteret** i ZIP-filen.
+## Test og begrænsninger
 
-## Tilføj flere spil senere
+Alle 16 gåder, den nødvendige tilbagevenden til kajen og slutningen er afprøvet i en automatiseret Chromium-gennemspilning uden JavaScript-fejl. Der er endnu ikke gennemført en elevtest af sværhedsgrad og spilletid. GitHub Pages er en statisk platform, så en teknisk dygtig elev kan stadig undersøge elevspillets svarkontrol i JavaScript, selv om selve lærerguiden er krypteret.
 
-Opret en ny mappe under `games/`, fx `games/nytmysterium/`, med spillets egne HTML-, CSS-, JS-, billed- og lydfiler. Tilføj en post til arrayet `rooms` i `rooms.json` med titel, coverbillede, sti, antal gåder m.m. Der kan være mange spil med helt forskellig opbygning og grafisk stil; kun forside og lærerindgang er fælles.
+## Struktur
 
-Fremtidige lærerwalkthroughs skal krypteres **før** de lægges i den offentlige `teacher/`-mappe og skal registreres i `rooms.json`. Brug samme lærerkode, hvis kollegaerne skal kunne åbne alle guider med én kode. Tilføj **aldrig** ukrypterede facitfiler i det offentlige repository.
-
-## Gemte fremskridt
-
-FYR 13 gemmer fremskridt lokalt med browserens `localStorage` under `fyr13-save-v1`. Hvert kommende spil skal have sin egen nøgle. Eleverne skal fortsætte på samme browser og enhed og må ikke rydde webstedsdata. Der er ingen central elevsporing eller login.
-
-Version: samlet portal og krypteret læreradgang, november 2026.
+- `index.html`, `portal.js`, `styles.css`, `rooms.json`: fælles portal.
+- `games/fyr13/`: spillets kode og grafik.
+- `teacher/`: krypterede walkthroughs, som kræver lærerkode.
