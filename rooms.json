@@ -3,19 +3,19 @@
     {
       "id": "fyr13",
       "title": "FYR 13",
-      "subtitle": "Natten hvor lyset slukkede · Forbundne områder",
-      "description": "Et interaktivt fyrtårnsmysterium med fem områder, 16 mekanismer og spor på tværs af scener. Find oplysninger tidligt, brug dem senere, og vend tilbage efter genstande, der får ny betydning.",
+      "subtitle": "Natten hvor lyset slukkede · et point-and-click-mysterium",
+      "description": "Undersøg over 100 steder i fem sammenhængende miljøer. Åbn skabe, løft genstande, find spor, vend tilbage, og løs 16 mekanismer.",
       "cover": "games/fyr13/assets/kaj-photo.webp",
       "url": "games/fyr13/",
       "puzzles": 16,
       "areas": 5,
       "genre": "Mysterium",
       "tags": [
-        "Udforskning",
-        "Logik",
-        "Koder"
+        "Point-and-click",
+        "Gåder",
+        "Udforskning"
       ],
-      "localSaveKey": "fyr13-save-v3",
+      "localSaveKey": "fyr13-save-v4",
       "teacherGuide": "teacher/fyr13-guide.enc.json",
       "teacherPdf": "teacher/fyr13-walkthrough-pdf.enc.json"
     }

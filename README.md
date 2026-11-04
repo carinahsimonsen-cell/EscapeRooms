@@ -1,38 +1,36 @@
-# Escaperooms – FYR 13 version 3
+# Escaperooms – FYR 13 (point-and-click, version 4)
 
-Denne ZIP indeholder **hele hjemmesiden** samt FYR 13 (version 3). Upload den til det eksisterende GitHub-repository `EscapeRooms`. Der skal IKKE oprettes et nyt repository.
+Dette er hele din GitHub Pages-hjemmeside inklusive Escaperooms-forside, FYR 13 og den krypterede læreradgang.
 
-## Upload / opdatering
+## Udgiv på GitHub
 
-1. Pak ZIP-filen ud på din computer.
-2. Gå til GitHub-repositoryet `EscapeRooms` → **Add file → Upload files**.
-3. Upload **indholdet af den udpakkede mappe** med alle undermapper (ikke selve ZIP-filen). Filer som `index.html` og `rooms.json` skal ligge direkte i repositoryets rod.
-4. Gem med **Commit changes**. Hvis GitHub viser eksisterende filer, skal de opdateres med de nye versioner.
-5. GitHub Pages bliver stående på `main` / `/(root)`. Det eksisterende link virker fortsat.
+1. Pak ZIP-filen ud på computeren.
+2. Åbn dit eksisterende offentlige repository `EscapeRooms` på GitHub.
+3. Vælg **Add file → Upload files**, og træk hele indholdet af den udpakkede mappe ind (IKKE selve mappen som en ekstra topmappe).
+4. Vælg **Commit changes**. Filer med samme sti skal erstattes.
+5. GitHub Pages skal stadig være indstillet til `main` / `/(root)`. Åbn derefter hjemmesiden og genindlæs (evt. Ctrl+F5).
 
-## Hvad er nyt i version 3?
+**Du skal ikke oprette et nyt repository.**
 
-- 5 områder og 16 gåder/mekanismer fordelt på 37 klikbare steder.
-- **Reelle forbindelser mellem områderne:** Skipperens kurskort på kajen bruges i forhallen. Kajens serviceetiket giver grundtallet til trykventilerne i maskinrummet. En indgravering under trappen i forhallen forklarer krypteringen i arkivet. Arkivets filterjournal bruges i lanternen.
-- **Tilbagevenden:** Et reparationsbilag i arkivet sender spilleren tilbage til en låst kasse på kajen. Den indeholder et nødprisme, som kræves i lanternen. Først derefter kan hovedkontakten tændes.
-- Logbogen bevarer de fundne spor fra alle områder. Områdekortet gør det muligt at vende tilbage. Et uløst spor markeres i områdekortet, når bilaget findes.
-- Hintsystem med tre hints pr. gåde og tre minutters ventetid mellem hints. Samme ordlyd i lærerens gennemgang.
-- Gemte fremskridt bruger nu `fyr13-save-v3`; tidligere versioner kan ikke fortsættes, fordi opgaver og afhængigheder er ændret.
+## Spillet
 
-## Læreradgang
+- 5 sammenhængende miljøer, 16 mekanismer og 103 undersøgelsessteder (herunder flere blindgyder).
+- Genstande undersøges direkte i billederne. Der er ikke synlige markeringer som standard.
+- Man kan kigge ned i beholdere, åbne skuffer/vinduer, løfte genstande og finde skjulte dokumenter.
+- Spor kan være relevante i andre områder og gøre det nødvendigt at vende tilbage.
+- Logbog, rygsæk, tidslåste hints og automatisk lagring (på samme enhed/browser) er med.
+- På små skærme kan man stryge vandret gennem en scene for at se hele området.
+- Brug **Brug blik for detaljer** hvis man vil se undersøgelsessteder markeret i kort tid.
+- Oplæsning bruger stadig browserens stemmer. Den er et midlertidigt tilgængelighedsvalg, indtil der er indtalte lydfiler. Baggrundslyd er slået fra som standard.
 
-Læreradgangen på forsiden bruger **samme læreradgangskode som før**. De to filer i `teacher/` er krypterede; den ukrypterede walkthrough-PDF er IKKE med i ZIP-filen. Del ikke lærerkoden eller PDF'en med eleverne.
+## Lærerguide
 
-## Stemmer og lyd
+Den komplette walkthrough og PDF ligger KUN i krypterede filer under `teacher/`. Den tidligere kode til lærerområdet fungerer stadig. Del aldrig den ukrypterede PDF via det offentlige GitHub-repository.
 
-Stemmeoplæsningen benytter stadig browserens indbyggede danske stemmer. Denne version fokuserer på gameplay og indhold på tværs af scenerne; indtalte stemmer er endnu ikke tilføjet. Lyd kan slås til og fra.
+## Spilstatus / tekniske begrænsninger
 
-## Test og begrænsninger
+Denne version bruger en ny gemmenøgle (`fyr13-save-v4`), så tidligere V3-fremskridt flyttes ikke automatisk med. Browserlagring virker ikke på tværs af computere eller inkognito-sessioner. Grafik viser fotografiske scener med programmerede nærvisninger og animerede handlinger; der er ikke tale om en egentlig 3D-spilmotor. Der er ingen server, så en teknisk kyndig spiller vil kunne inspicere klientkoden.
 
-Alle 16 gåder, den nødvendige tilbagevenden til kajen og slutningen er afprøvet i en automatiseret Chromium-gennemspilning uden JavaScript-fejl. Der er endnu ikke gennemført en elevtest af sværhedsgrad og spilletid. GitHub Pages er en statisk platform, så en teknisk dygtig elev kan stadig undersøge elevspillets svarkontrol i JavaScript, selv om selve lærerguiden er krypteret.
+## Nye spil
 
-## Struktur
-
-- `index.html`, `portal.js`, `styles.css`, `rooms.json`: fælles portal.
-- `games/fyr13/`: spillets kode og grafik.
-- `teacher/`: krypterede walkthroughs, som kræver lærerkode.
+Læg hvert nyt spil i sin egen mappe under `games/` og tilføj det til `rooms.json`. Samme forside kan vise alle spil.
